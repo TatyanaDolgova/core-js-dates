@@ -17,8 +17,9 @@
  * '01 Jan 1970 00:00:00 UTC' => 0
  * '04 Dec 1995 00:12:00 UTC' => 818035920000
  */
-function dateToTimestamp(/* date */) {
-  throw new Error('Not implemented');
+function dateToTimestamp(date) {
+  const newDate = new Date(date)
+  return newDate.getTime();
 }
 
 /**
@@ -31,8 +32,25 @@ function dateToTimestamp(/* date */) {
  * Date(2023, 5, 1, 8, 20, 55) => '08:20:55'
  * Date(2015, 10, 20, 23, 15, 1) => '23:15:01'
  */
-function getTime(/* date */) {
-  throw new Error('Not implemented');
+function getTime(date) {
+  const newDate = new Date(date);
+  let hours = newDate.getHours().toString();
+  let minutes = newDate.getMinutes().toString();
+  let seconds = newDate.getSeconds().toString();
+
+  if (hours.length < 2) {
+    hours = '0' + hours
+  }
+
+  if (minutes.length < 2) {
+    minutes = '0' + minutes;
+  }
+
+  if (seconds.length < 2) {
+    seconds = '0' + seconds;
+  }
+
+  return `${hours}:${minutes}:${seconds}`
 }
 
 /**
