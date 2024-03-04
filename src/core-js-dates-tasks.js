@@ -18,7 +18,7 @@
  * '04 Dec 1995 00:12:00 UTC' => 818035920000
  */
 function dateToTimestamp(date) {
-  const newDate = new Date(date)
+  const newDate = new Date(date);
   return newDate.getTime();
 }
 
@@ -39,18 +39,18 @@ function getTime(date) {
   let seconds = newDate.getSeconds().toString();
 
   if (hours.length < 2) {
-    hours = '0' + hours
+    hours = `0${hours}`;
   }
 
   if (minutes.length < 2) {
-    minutes = '0' + minutes;
+    minutes = `0${minutes}`;
   }
 
   if (seconds.length < 2) {
-    seconds = '0' + seconds;
+    seconds = `0${seconds}`;
   }
 
-  return `${hours}:${minutes}:${seconds}`
+  return `${hours}:${minutes}:${seconds}`;
 }
 
 /**
