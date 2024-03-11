@@ -35,8 +35,8 @@ function dateToTimestamp(date) {
 function getTime(date) {
   const newDate = new Date(date);
   let hours = newDate.getHours().toString();
-  let minutes = newDate.getMinutes().toString();
-  let seconds = newDate.getSeconds().toString();
+  let minutes = newDate.getUTCMinutes().toString();
+  let seconds = newDate.getUTCSeconds().toString();
 
   if (hours.length < 2) {
     hours = `0${hours}`;
@@ -115,8 +115,11 @@ function getNextFriday(date) {
  * 2, 2024 => 29
  */
 function getCountDaysInMonth(month, year) {
-  const newDate = new Date(year, month);
-  return newDate.getUTCDate();
+  const newDate = new Date(year, month - 1, 1);
+  newDate.setMonth(newDate.getMonth() + 1);
+  newDate.setDate(newDate.getDate() - 1);
+
+  return newDate.getDate();
 }
 
 /**
